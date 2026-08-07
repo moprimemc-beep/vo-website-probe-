@@ -15,12 +15,21 @@ import { NotFound } from "@/pages/NotFound";
 export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-surface-light">
-      <a href="#main" className="skip-link">
+      <a
+        href="#main"
+        className="skip-link"
+        onClick={(e) => {
+          e.preventDefault();
+          const el = document.getElementById("main");
+          el?.focus();
+          el?.scrollIntoView();
+        }}
+      >
         Zum Inhalt springen
       </a>
       <ScrollToTop />
       <Header />
-      <main id="main" className="flex-1">
+      <main id="main" tabIndex={-1} className="flex-1 focus:outline-none">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/leistungen" element={<Leistungen />} />
