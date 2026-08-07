@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@import "@fontsource/bricolage-grotesque/400.css";
+@import "@fontsource/bricolage-grotesque/500.css";
+@import "@fontsource/bricolage-grotesque/600.css";
+@import "@fontsource/bricolage-grotesque/700.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+
+@theme {
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-canvas-dark: #10140e;
+  --color-canvas-deep: #0a0c08;
+  --color-surface-light: #f7f4ec;
+  --color-surface-mid: #ece6d6;
+  --color-surface-card: #171c13;
+  --color-surface-card-line: #262d1f;
+
+  --color-text-onlight: #14170f;
+  --color-text-onlight-soft: #5b5f4f;
+  --color-text-ondark: #f3f0e6;
+  --color-text-ondark-soft: #9aa08c;
+
+  --color-line-dark: #262d1f;
+  --color-line-light: #ddd6c0;
+
+  --color-accent: #c1662e;
+  --color-accent-soft: #e3a874;
+  --color-accent-deep: #944c1f;
+
+  --color-form-success: #6b9e6e;
+  --color-form-error: #c1553d;
+
+  --color-video-overlay: rgba(10, 12, 8, 0.55);
+
+  --breakpoint-xs: 420px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--color-surface-light);
+    color: var(--color-text-onlight);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overscroll-behavior-y: none;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-text-ondark);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--color-accent);
+  color: var(--color-text-ondark);
+  padding: 12px 20px;
+  border-radius: 0 0 8px 0;
+  font-family: var(--font-body);
+  font-weight: 500;
+}
+.skip-link:focus {
+  left: 0;
+}
